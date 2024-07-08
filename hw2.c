@@ -31,7 +31,7 @@ asmlinkage long sys_get_path_sum(pid_t target) {
 
     while (task) {
         sum += task->weight;
-        if (task == current) {
+        if (task == current || task->getpid() == 1) {
             break;
         }
         task = task->parent; // Koren: what's the difference between parent and real_parent?
